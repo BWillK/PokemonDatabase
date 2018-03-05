@@ -1,10 +1,13 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
+# Record creation code for my database
 #
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# Clear the records first...
+PokemonType.delete_all
+PokemonAbility.delete_all
+Pokemon.delete_all
+Type.delete_all
+Ability.delete_all
+
+
 @url = 'https://pokeapi.co/api/v2/pokemon/'
 if Pokemon.count == 0
   NEXT_POKEMON = 1
@@ -38,16 +41,14 @@ TOTAL_POKEMON = HTTParty.get(@url).parsed_response['count']
   @pokemon['types'].each do |thisType|
     @typeUrl = thisType['type']['url']
     @type = HTTParty.get(@typeUrl).parsed_response
-    puts 'Creating type: ' + type['name']
+    puts 'Creating type: ' + @type['name']
     fresh_type = Type.where(name: @type['name']).first_or_create do |new_type|
       new_type.type_id = @type['id']
       new_type.generation = @type['generation']['name']
     end
   #   Create reference on join table
-  PokemonType.create(pokemon: new_pokeman, ability: fresh_type)
+  PokemonType.create(pokemon: new_pokeman, type: fresh_type)
   end
 
-  new_pokeman = Pokemon.create(name: @pokemon['name'], height: @pokemon['height'], weight: @pokemon['weight'], pokemon_id: @pokemon['id'], order: @pokemon['order'], id: x)
-  new_pokeman.save
 end
 
