@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  height: 9.99
+  weight: 1
+  pokemon_id: 1
+  order: MyString
+
+two:
+  name: MyString
+  height: 9.99
+  weight: 1
+  pokemon_id: 1
+  order: MyString
