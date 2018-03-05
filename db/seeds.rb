@@ -13,32 +13,38 @@ else
 end
 TOTAL_POKEMON = HTTParty.get(@url).parsed_response['count']
 
-(0..165).each do |x|
+(1..165).each do |x|
   puts "Creating Pokemon #{x}"
   @pokemon = HTTParty.get(@url + x.to_s).parsed_response
+
+  # Create th pokemon!
+  new_pokeman = Pokemon.create(name: @pokemon['name'], height: @pokemon['height'], weight: @pokemon['weight'], pokemon_id: @pokemon['id'], order: @pokemon['order'], id: x)
+  new_pokeman.save
 
   # Populate abilities tables here
   @pokemon['abilities'].each do |thisAbility|
     @abilityUrl = thisAbility['ability']['url']
     @ability = HTTParty.get(@abilityUrl).parsed_response
-    Ability.where(name: @ability['name']).first_or_create do |new_ability|
+    puts 'Creating ability: ' + @ability['name']
+    fresh_ability = Ability.where(name: @ability['name']).first_or_create do |new_ability|
       new_ability.generation = @ability['generation']['name']
       new_ability.ability_id = @ability['id']
     end
     # Create reference on join table
-    PokemonAbility.create(pokemon: @pokemon, ability: @ability)
+    PokemonAbility.create(pokemon: new_pokeman, ability: fresh_ability)
   end
 
   # Populate Types table here
   @pokemon['types'].each do |thisType|
     @typeUrl = thisType['type']['url']
     @type = HTTParty.get(@typeUrl).parsed_response
-    Type.where(name: @type['name']).first_or_create do |new_type|
+    puts 'Creating type: ' + type['name']
+    fresh_type = Type.where(name: @type['name']).first_or_create do |new_type|
       new_type.type_id = @type['id']
       new_type.generation = @type['generation']['name']
     end
   #   Create reference on join table
-  PokemonType.create(pokemon: @pokemon, ability: @ability)
+  PokemonType.create(pokemon: new_pokeman, ability: fresh_type)
   end
 
   new_pokeman = Pokemon.create(name: @pokemon['name'], height: @pokemon['height'], weight: @pokemon['weight'], pokemon_id: @pokemon['id'], order: @pokemon['order'], id: x)
