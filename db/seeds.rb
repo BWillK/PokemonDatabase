@@ -17,9 +17,9 @@ end
 TOTAL_POKEMON = HTTParty.get(@url).parsed_response['count']
 
 (1..165).each do |x|
-  puts "Creating Pokemon #{x}"
-  @pokemon = HTTParty.get(@url + x.to_s).parsed_response
 
+  @pokemon = HTTParty.get(@url + x.to_s).parsed_response
+  puts "Creating Pokemon #{x}: " + @pokemon['name']
   # Create th pokemon!
   new_pokeman = Pokemon.create(name: @pokemon['name'], height: @pokemon['height'], weight: @pokemon['weight'], pokemon_id: @pokemon['id'], order: @pokemon['order'], id: x)
   new_pokeman.save
