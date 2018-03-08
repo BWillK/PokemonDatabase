@@ -38,6 +38,7 @@ gem 'sprockets-rails'
 gem 'rails-assets-tether', source: 'https://rails-assets.org'
 gem 'jquery-rails'
 gem 'ruby-graphviz'
+gem 'kaminari'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
