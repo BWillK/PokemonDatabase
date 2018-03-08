@@ -17,7 +17,6 @@ class PokemonsController < ApplicationController
     @pokemon = Pokemon.new
   end
 
-
   # GET /pokemons/1/edit
   def edit
   end

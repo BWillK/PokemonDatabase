@@ -32,11 +32,12 @@ gem 'jbuilder', '~> 2.5'
 
 # Muh gems!
 gem 'httparty'
-gem 'heroku'
+gem 'rails-erd'
 gem 'bootstrap'
 gem 'sprockets-rails'
 gem 'rails-assets-tether', source: 'https://rails-assets.org'
 gem 'jquery-rails'
+gem 'ruby-graphviz'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

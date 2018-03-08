@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  get 'search/index'
+  root to: 'welcome#index'
+  root 'pages#main'
+
+  get 'search', to: 'search#index', as: 'search'
 
   resources :abilities
   resources :types
