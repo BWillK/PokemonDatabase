@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Pokemons</h1>
+<h1>Pokemon</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
@@ -17,14 +17,14 @@
   <tbody>
     <% @pokemons.each do |pokemon| %>
       <tr>
-        <td><%= pokemon.name %></td>
+        <td><%= pokemon.name.titlecase %></td>
         <td><%= pokemon.height %></td>
         <td><%= pokemon.weight %></td>
         <td><%= pokemon.pokemon_id %></td>
         <td><%= pokemon.order %></td>
-        <td><%= link_to 'Show', pokemon %></td>
-        <td><%= link_to 'Edit', edit_pokemon_path(pokemon) %></td>
-        <td><%= link_to 'Destroy', pokemon, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><button class="btn-link"><%= link_to 'Show', pokemon %></button></td>
+        <td><button class="btn-link"><%= link_to 'Edit', edit_pokemon_path(pokemon) %></button></td>
+        <td><button class="btn-link"><%= link_to 'Destroy', pokemon, method: :delete, data: { confirm: 'Are you sure?' } %></button></td>
       </tr>
     <% end %>
   </tbody>

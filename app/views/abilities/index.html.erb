@@ -2,7 +2,7 @@
 
 <h1>Abilities</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
@@ -15,12 +15,12 @@
   <tbody>
     <% @abilities.each do |ability| %>
       <tr>
-        <td><%= ability.name %></td>
-        <td><%= ability.generation %></td>
+        <td><%= ability.name.titlecase %></td>
+        <td><%= ability.generation.titlecase %></td>
         <td><%= ability.ability_id %></td>
-        <td><%= link_to 'Show', ability %></td>
-        <td><%= link_to 'Edit', edit_ability_path(ability) %></td>
-        <td><%= link_to 'Destroy', ability, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><button class="btn-link"><%= link_to 'Show', ability %></button></td>
+        <td><button class="btn-link"><%= link_to 'Edit', edit_ability_path(ability) %></button></td>
+        <td><button class="btn-link"><%= link_to 'Destroy', ability, method: :delete, data: { confirm: 'Are you sure?' } %></button></td>
       </tr>
     <% end %>
   </tbody>

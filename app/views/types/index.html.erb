@@ -2,7 +2,7 @@
 
 <h1>Types</h1>
 
-<table>
+<table class = table>
   <thead>
     <tr>
       <th>Name</th>
@@ -15,12 +15,12 @@
   <tbody>
     <% @types.each do |type| %>
       <tr>
-        <td><%= type.name %></td>
+        <td><%= type.name.titlecase %></td>
         <td><%= type.type_id %></td>
-        <td><%= type.generation %></td>
-        <td><%= link_to 'Show', type %></td>
-        <td><%= link_to 'Edit', edit_type_path(type) %></td>
-        <td><%= link_to 'Destroy', type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= type.generation.titlecase %></td>
+        <td><button class="btn-link"><%= link_to 'Show', type %></button></td>
+        <td><button class="btn-link"><%= link_to 'Edit', edit_type_path(type) %></button></td>
+        <td><button class="btn-link"><%= link_to 'Destroy', type, method: :delete, data: { confirm: 'Are you sure?' } %></button></td>
       </tr>
     <% end %>
   </tbody>
