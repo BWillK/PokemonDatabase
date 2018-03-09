@@ -39,6 +39,7 @@ gem 'rails-assets-tether', source: 'https://rails-assets.org'
 gem 'jquery-rails'
 gem 'ruby-graphviz'
 gem 'kaminari'
+gem 'bootstrap4-kaminari-views'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

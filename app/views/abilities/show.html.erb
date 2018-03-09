@@ -2,7 +2,7 @@
 
 <p>
   <strong>Name:</strong>
-  <%= @ability.name %>
+  <%= @ability.name.titlecase %>
 </p>
 
 <p>
@@ -11,8 +11,16 @@
 </p>
 
 <p>
-  <strong>Ability:</strong>
+  <strong>Ability Number:</strong>
   <%= @ability.ability_id %>
+</p>
+
+<strong>Pokemon with the ability <%= @ability.name.titlecase %>:</strong>
+<p>
+  <% @pokebility = Ability.find_by_name(@ability.name).pokemons.pluck(:name) %>
+  <% @pokebility.each do |pokebility| %>
+    <%= pokebility.titlecase %>,
+  <%  end %>
 </p>
 
 <%= link_to 'Edit', edit_ability_path(@ability) %> |

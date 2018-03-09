@@ -4,7 +4,7 @@ class TypesController < ApplicationController
   # GET /types
   # GET /types.json
   def index
-    @types = Type.all
+    @types = Type.page(params[:page]).per(10)
   end
 
   # GET /types/1

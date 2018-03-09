@@ -15,5 +15,13 @@
   <%= @type.generation %>
 </p>
 
+<strong>Pokemon of Type <%= @type.name.titlecase %>:</strong>
+<p>
+  <% @pokeTypes = Type.find_by_name(@type.name).pokemons.pluck(:name) %>
+  <% @pokeTypes.each do |pokeType| %>
+  <%= pokeType.titlecase %>,
+  <%  end %>
+</p>
+
 <%= link_to 'Edit', edit_type_path(@type) %> |
 <%= link_to 'Back', types_path %>

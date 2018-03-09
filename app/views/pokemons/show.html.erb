@@ -2,7 +2,7 @@
 
 <p>
   <strong>Name:</strong>
-  <%= @pokemon.name %>
+  <%= @pokemon.name.titlecase %>
 </p>
 
 <p>
@@ -16,13 +16,29 @@
 </p>
 
 <p>
-  <strong>Pokemon:</strong>
+  <strong>Pokedex Number:</strong>
   <%= @pokemon.pokemon_id %>
 </p>
 
 <p>
   <strong>Order:</strong>
   <%= @pokemon.order %>
+</p>
+
+<strong>Types: </strong>
+<p>
+  <% @pokeTypes = Pokemon.find_by_name(@pokemon.name).types.pluck(:name) %>
+  <% @pokeTypes.each do |pokeType| %>
+    <%= pokeType.titlecase %></br>
+  <%  end %>
+</p>
+
+<strong>Abilities: </strong>
+<p>
+  <% @pokebilities = Pokemon.find_by_name(@pokemon.name).abilities.pluck(:name) %>
+  <% @pokebilities.each do |pokebility| %>
+    <%= pokebility.titlecase %></br>
+  <%  end %>
 </p>
 
 <%= link_to 'Edit', edit_pokemon_path(@pokemon) %> |

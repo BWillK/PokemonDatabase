@@ -4,7 +4,7 @@ class AbilitiesController < ApplicationController
   # GET /abilities
   # GET /abilities.json
   def index
-    @abilities = Ability.all
+    @abilities = Ability.page(params[:page]).per(10)
   end
 
   # GET /abilities/1

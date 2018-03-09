@@ -1,4 +1,6 @@
 <p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-6">
 
 <h1>Pokemon</h1>
 
@@ -17,7 +19,8 @@
   <tbody>
     <% @pokemons.each do |pokemon| %>
       <tr>
-        <td><%= pokemon.name.titlecase %></td>
+
+        <td><%= link_to pokemon.name.titlecase, pokemon_path(pokemon.id) %></td>
         <td><%= pokemon.height %></td>
         <td><%= pokemon.weight %></td>
         <td><%= pokemon.pokemon_id %></td>
@@ -29,9 +32,10 @@
     <% end %>
   </tbody>
 </table>
-
-<% paginate @pokemons %>
+   <%=  paginate @pokemons, theme: 'twitter-bootstrap-4', pagination_class: "justify-content-center" %>
 
 <br>
 
 <%= link_to 'New Pokemon', new_pokemon_path %>
+  </div>
+</div>
